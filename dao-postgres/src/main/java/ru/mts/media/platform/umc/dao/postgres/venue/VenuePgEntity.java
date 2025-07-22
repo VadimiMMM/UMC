@@ -1,8 +1,10 @@
 package ru.mts.media.platform.umc.dao.postgres.venue;
 
 import jakarta.persistence.*;
+import java.util.Set;
 import lombok.Data;
 import ru.mts.media.platform.umc.dao.postgres.common.FullExternalIdPk;
+import ru.mts.media.platform.umc.dao.postgres.event.EventPgEntity;
 
 @Entity
 @Data
@@ -26,4 +28,7 @@ public class VenuePgEntity {
     private String referenceId;
 
     private String name;
+
+    @ManyToMany(mappedBy = "venues")
+    private Set<EventPgEntity> events;
 }
